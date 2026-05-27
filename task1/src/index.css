@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+/* Glassmorphism Styling */
+.dashboard-glass {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.dark .dashboard-glass {
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.04);
+}
+
+.dark .glass-card {
+  background: rgba(30, 41, 59, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.3);
+  border-radius: 10px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(75, 85, 99, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.5);
+}
+
+/* Weather animation backdrops */
+.weather-bg-sunny {
+  background: linear-gradient(135deg, #fef08a 0%, #f97316 100%);
+}
+.dark .weather-bg-sunny {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+}
+
+.weather-bg-cloudy {
+  background: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 100%);
+}
+.dark .weather-bg-cloudy {
+  background: linear-gradient(135deg, #334155 0%, #0f172a 100%);
+}
+
+.weather-bg-rainy {
+  background: linear-gradient(135deg, #93c5fd 0%, #1d4ed8 100%);
+}
+.dark .weather-bg-rainy {
+  background: linear-gradient(135deg, #1e3a8a 0%, #020617 100%);
+}
+
+.weather-bg-snowy {
+  background: linear-gradient(135deg, #e0f2fe 0%, #38bdf8 100%);
+}
+.dark .weather-bg-snowy {
+  background: linear-gradient(135deg, #0c4a6e 0%, #020617 100%);
+}

@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: task_mongodb
+    ports:
+      - "27018:27017" # Bind to 27018 to prevent port conflict with other tasks
+    volumes:
+      - mongo_data:/data/db
+
+  backend:
+    build: ./backend
+    container_name: task_backend
+    ports:
+      - "6000:6000"
+    environment:
+      - PORT=6000
+      - MONGO_URI=mongodb://mongo:27017/glowtask
+      - JWT_SECRET=saas_super_secret_jwt_key_12345
+      - FRONTEND_URL=http://localhost
+    depends_on:
+      - mongo
+    volumes:
+      - backend_uploads:/app/uploads
+
+  frontend:
+    build: ./frontend
+    container_name: task_frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  mongo_data:
+  backend_uploads:

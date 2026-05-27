@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:6.0
+    container_name: tracker_mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  backend:
+    build: ./backend
+    container_name: tracker_backend
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - MONGO_URI=mongodb://mongodb:27017/productivity
+      - JWT_SECRET=productivity_tracker_jwt_secret_key_12345
+      - FRONTEND_URL=http://localhost:8080
+    depends_on:
+      - mongodb
+
+  frontend:
+    build: ./frontend
+    container_name: tracker_frontend
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - backend
+
+volumes:
+  mongodb_data:
